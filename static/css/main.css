@@ -1,17 +1,38 @@
 :root {
-  color-scheme: light dark;
   --sans-serif-fonts: var(--bs-font-sans-serif);
 
-  /* Colors */
-  /* Hue is between neovim green and blue for text/background */
-  /* Saturation is low */
-  --fg-color: light-dark(#29332f, #a9d5c4);
-  --inverse-fg-color: light-dark(#a9d5c4, #29332f);
-  --bg-color: light-dark(#e7eee8, #0f191f);
-  --accent-bg-color: light-dark(#d3e4db, #0b151b);
-  --link-color: light-dark(#195174, #5fb950);
-  --accent-color: light-dark(#000, #61ff00);
-  --border-color: light-dark(#658fac, #1174b1);
+  /* Pale rust surfaces with saturated burnt-rust accents. */
+  color-scheme: light;
+  --fg-color: #3e2b24;
+  --inverse-fg-color: #efd8cb; /* Dark-mode fg color. */
+  --bg-color: #faf0e8;
+  --accent-bg-color: #f0d7c7;
+  --selected-bg-color: #e8bca4;
+  --link-color: #9b3d22;
+  --accent-color: #7c2d18;
+  --border-color: #bb7658;
+  --button-bg-color: #a94326;
+  --button-edge-color: #7c2d18;
+  --button-hover-bg-color: #87321b;
+  --button-fg-color: #fff9f4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --fg-color: #efd8cb;
+    --inverse-fg-color: #3e2b24; /* Light-mode fg color. */
+    --bg-color: #201713;
+    --accent-bg-color: #30211b;
+    --selected-bg-color: #583626;
+    --link-color: #e7a17b;
+    --accent-color: #f5bd98;
+    --border-color: #a66b50;
+    --button-bg-color: #d97950;
+    --button-edge-color: #b45532;
+    --button-hover-bg-color: #f0b28c;
+    --button-fg-color: #241710;
+  }
 }
 
 @media (prefers-contrast: more) {
@@ -32,6 +53,11 @@ body {
   line-height: 1.6;
   color: var(--fg-color);
   background-color: var(--bg-color);
+}
+
+::selection {
+  color: var(--bg-color);
+  background-color: var(--link-color);
 }
 
 @media (min-width: 50em) {
@@ -136,10 +162,10 @@ pre {
 
 /* Keyboard input should be distinctive from <pre> and <code>. */
 kbd {
-  box-shadow: 0 2px 4px light-dark(rgba(0, 0, 0, 0.2), var(--border-color)),
-    inset 0 0 0 2px light-dark(#fff, rgba(255, 255, 255, 0.2));
+  box-shadow: 0 2px 4px light-dark(rgba(62, 43, 36, 0.2), var(--border-color)),
+    inset 0 0 0 2px light-dark(var(--bg-color), rgba(255, 255, 255, 0.2));
   color: light-dark(var(--accent-color), var(--fg-color));
-  background-color: light-dark(#ebebeb, var(--accent-bg-color));
+  background-color: var(--accent-bg-color);
   border: 1pt solid light-dark(var(--border-color), var(--fg-color));
   border-radius: 3px;
   padding: 2px 5px;
@@ -265,7 +291,12 @@ samp {
  * Logo
  */
 .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: var(--link-color);
+  font-size: 1.75rem;
+  text-decoration: none;
 }
 .navbar-brand:hover,
 .navbar-brand:focus,
@@ -282,11 +313,16 @@ samp {
 }
 
 .dropdown-menu {
+  --bs-dropdown-link-active-color: var(--accent-color);
+  --bs-dropdown-link-active-bg: var(--selected-bg-color);
   background-color: var(--accent-bg-color);
 }
 
 .dropdown-item {
   color: var(--link-color);
+}
+.dropdown-item.active {
+  font-weight: 600;
 }
 .dropdown-item:focus,
 .dropdown-item:hover,
@@ -353,29 +389,6 @@ samp {
   font-weight: 700;
 }
 
-/* Responsive iframe container. */
-.intro-video-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-
-  /* width: 560px; */
-  /* height: 315px; */
-  /* align-items: center; */
-}
-
-/* Responsive iframe div, fills its container. */
-.intro-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .faqs dd {
   color: var(--fg-color);
   margin-left: 0;
@@ -393,9 +406,8 @@ samp {
  */
 
 .btn {
-  background-color: #37b026;
-  background: linear-gradient(#00b952 0 95%, #378ccc 95% 100%);
-  color: white;
+  background: linear-gradient(var(--button-bg-color) 0 95%, var(--button-edge-color) 95% 100%);
+  color: var(--button-fg-color);
   border-radius: 0.3em;
   padding: 0.5em 1em;
   margin: 0 0.25em;
@@ -410,10 +422,11 @@ samp {
 
 .btn:hover,
 .btn:focus {
-  color: white;
-  background-color: var(--accent-color);
-  box-shadow: 0 0 2px var(--accent-color), 0 0 10px gold;
-  outline: 4px solid white;
+  color: var(--button-fg-color);
+  background: var(--button-hover-bg-color);
+  box-shadow: 0 0 0 2px var(--bg-color);
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
 }
 
 a.primary {
@@ -549,25 +562,14 @@ iframe.poll {
  */
 
 :root {
-  /* search */
-  --docsearch-search-button-background: var(--accent-bg-color);
-  --docsearch-search-button-text-color: light-dark(var(--link-color), var(--fg-color));
-  --docsearch-key-background: var(--accent-bg-color);
-  --docsearch-key-color: light-dark(var(--link-color), var(--fg-color));
+  --docsearch-primary-color: var(--accent-color);
+  --docsearch-text-color: var(--fg-color);
+  --docsearch-highlight-color: var(--link-color);
+  --docsearch-container-background: rgba(62, 43, 36, 0.35);
 
   /* modal */
-  --docsearch-container-background: rgba(231, 238, 232, 0.2);
   --docsearch-modal-background: var(--bg-color);
   --docsearch-modal-shadow: none;
-  --docsearch-soft-primary-color: var(--inverse-fg-color);
-  --docsearch-secondary-text-color: light-dark(var(--link-color), var(--fg-color));
-  --docsearch-text-color: light-dark(var(--link-color), var(--fg-color));
-  --docsearch-highlight-color: var(--fg-color);
-  --docsearch-subtle-color: transparent;
-  --docsearch-muted-color: light-dark(var(--border-color), var(--fg-color));
-
-  /* icon */
-  --docsearch-icon-color: light-dark(var(--link-color), var(--fg-color));
 
   /* searchbox */
   --docsearch-searchbox-background: var(--accent-bg-color);
@@ -575,46 +577,56 @@ iframe.poll {
 
   /* hit */
   --docsearch-hit-color: var(--docsearch-text-color);
+  --docsearch-hit-active-color: var(--bg-color);
   --docsearch-hit-background: var(--accent-bg-color);
-  --docsearch-hit-highlight-color: var(--inverse-fg-color);
   --docsearch-hit-shadow: none;
 
+  /* key */
+  --docsearch-key-gradient: transparent;
+  --docsearch-key-shadow: none;
+
   /* footer */
-  --docsearch-background-color: var(--accent-bg-color);
   --docsearch-footer-background: var(--bg-color);
   --docsearch-footer-shadow: none;
 }
 
-/* DocSearch-Modal */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --docsearch-primary-color: var(--accent-color);
+    --docsearch-text-color: var(--fg-color);
+    --docsearch-highlight-color: var(--link-color);
+    --docsearch-container-background: rgba(20, 13, 10, 0.75);
 
-.DocSearch-Modal {
-  border: 1px solid light-dark(var(--border-color), var(--fg-color));
+    /* modal */
+    --docsearch-modal-background: var(--bg-color);
+    --docsearch-modal-shadow: none;
+
+    /* searchbox */
+    --docsearch-searchbox-background: var(--accent-bg-color);
+    --docsearch-searchbox-focus-background: var(--accent-bg-color);
+
+    /* hit */
+    --docsearch-hit-color: var(--docsearch-text-color);
+    --docsearch-hit-active-color: var(--bg-color);
+    --docsearch-hit-background: var(--accent-bg-color);
+    --docsearch-hit-shadow: none;
+
+    /* key */
+    --docsearch-key-gradient: transparent;
+    --docsearch-key-shadow: none;
+
+    /* footer */
+    --docsearch-footer-background: var(--bg-color);
+    --docsearch-footer-shadow: none;
+  }
 }
 
-.DocSearch-Input::placeholder {
-  color: light-dark(var(--link-color), var(--fg-color));
+.DocSearch mark {
+  padding: 0;
 }
 
-.DocSearch-Dropdown {
-  border-top: 1px solid light-dark(var(--border-color), var(--fg-color));
-}
-
-/* DocSearch Icons */
-
-.DocSearch path,
-.DocSearch-Search circle {
-  stroke: light-dark(var(--link-color), var(--fg-color));
-}
-
-/* DocSearch-Commands-Key */
-
-.DocSearch-Commands-Key {
-  border: 1px solid light-dark(var(--border-color), var(--fg-color));
-  color: light-dark(var(--link-color), var(--fg-color));
-}
-
-.DocSearch-Divider {
-  border-color: light-dark(var(--border-color), var(--fg-color));
+.DocSearch footer {
+  border-top: 1px solid var(--link-color)
 }
 
 .DocSearch-Button-Key {
@@ -622,49 +634,43 @@ iframe.poll {
   padding: 0;
   margin-right: 0;
   width: auto;
+  background: var(--bg-color);
+  box-shadow: none;
 }
 
 .DocSearch-Button-Keys {
   border-radius: 4px;
   padding: 0 6px;
   min-width: auto;
-  border: 1px solid light-dark(var(--border-color), var(--fg-color));
+  border: 1px solid var(--border-color);
+  background: transparent;
 }
 
 .DocSearch-Button {
-  border:  1px solid light-dark(var(--border-color), var(--fg-color));
-}
-
-.DocSearch-Clear {
-  color: light-dark(var(--link-color), var(--fg-color));
-}
-
-.DocSearch-Hit-Container {
   color: var(--link-color);
+  background: var(--accent-bg-color);
+  border: 1px solid var(--border-color);
+  box-shadow: none;
 }
 
-.DocSearch mark {
-  padding: 0;
+.DocSearch-Button .DocSearch-Search-Icon,
+.DocSearch-Button .DocSearch-Button-Placeholder,
+.DocSearch-Button .DocSearch-Button-Keys,
+.DocSearch-Button .DocSearch-Button-Key {
+  color: inherit;
 }
 
-/* DocSearch footer */
-
-.DocSearch footer {
-  border-top: 1px solid light-dark(var(--border-color), var(--fg-color));
+.DocSearch-Button:hover,
+.DocSearch-Button:focus {
+  color: var(--accent-color);
+  background: var(--selected-bg-color);
+  border-color: var(--link-color);
+  box-shadow: none;
 }
 
-/* DocSearch-Logo */
-
-.DocSearch-Logo a:hover {
-  background: none;
-}
-
-.DocSearch-Logo path,
-.DocSearch-Logo rect,
-.DocSearch-Logo a::after {
-  fill: light-dark(var(--link-color), var(--fg-color));
-  stroke: light-dark(var(--link-color), var(--fg-color));
-  color: light-dark(var(--link-color), var(--fg-color));
+.DocSearch-Button:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
 }
 
 /* Force footer to bottom of viewport. */

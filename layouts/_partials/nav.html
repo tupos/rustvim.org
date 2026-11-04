@@ -1,8 +1,9 @@
 <header class="container">
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a href="/" class="navbar-brand" {{ if eq .RelPermalink "/" }}aria-current="page"{{ end }} aria-label="logo">
-        {{ partial "logo.svg" . }}
+      <a href="/" class="navbar-brand" {{ if eq .RelPermalink "/" }}aria-current="page"{{ end }} aria-label="Rustvim home">
+        <img src="{{ "logos/rustvim-logo.png" | relURL }}" alt="" width="50" height="50">
+        <span>Rustvim</span>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

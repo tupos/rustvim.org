@@ -1,6 +1,6 @@
 :root {
-  --code-color: light-dark(#004b4b, #00c243);
-  --tag-color: light-dark(#095943, #00b7b7);
+  --code-color: var(--link-color);
+  --tag-color: var(--accent-color);
 }
 
 @media (min-width: 40em) {

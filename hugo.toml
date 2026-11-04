@@ -25,7 +25,7 @@ summaryLength = 0
   description = "hyperextensible Vim-based text editor"
 
   # Used for social previews
-  images = ['/logos/neovim-logo-social-preview.png']
+  images = ['/logos/rustvim-logo.png']
 
   [params.news]
     name = "Neovim Newsletter"
@@ -81,13 +81,3 @@ summaryLength = 0
   name = "Documentation"
   url = "/doc/"
   weight = 40
-
-[[menus.main]]
-  name = "Sponsors"
-  url = "/sponsors/"
-  weight = 50
-
-[[menus.main]]
-  name = "Store"
-  url = "https://store.neovim.io/"
-  weight = 60

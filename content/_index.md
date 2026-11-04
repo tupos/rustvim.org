@@ -78,21 +78,6 @@ Neovim UIs are "inverted plugins". Here are some popular ones:
 {{% /scratch %}}
 
 
-{{% scratch "impressions" %}}
-## Impressions
-
-"Neovim is exactly what it claims to be. It fixes every issue I have
-with Vim."
-[---Geoff Greer](http://geoff.greer.fm/2015/01/15/why-neovim-is-better-than-vim/)
-
-"Discovering what Neovim and its community had to offer brought me a lot of joy."
-[---Thorsten Ball](https://registerspill.thorstenball.com/p/from-vim-to-zed)
-
-"A nice looking website, that's one thing Neovim did right."
-[---Bram Moolenaar](https://www.binpress.com/vim-creator-bram-moolenaar-interview/)
-{{% /scratch %}}
-
-
 {{% scratch "faq" %}}
 ## FAQ {#faqs}
 
