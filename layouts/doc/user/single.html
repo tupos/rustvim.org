@@ -4,13 +4,13 @@
     {{- $note := printf `
     <p>
       <i>
-        Nvim <code>:help</code> pages, <a
-          href="https://github.com/neovim/neovim/blob/master/src/gen/gen_help_html.lua">generated</a>
-        from <a href="https://github.com/neovim/neovim/blob/master/runtime/doc/%s">source</a>
+        Rustvim <code>:help</code> pages, <a
+          href="%s/blob/master/src/gen/gen_help_html.lua">generated</a>
+        from <a href="%s/blob/master/runtime/doc/%s">source</a>
         using the <a href="https://github.com/neovim/tree-sitter-vimdoc">tree-sitter-vimdoc</a> parser.
       </i>
     </p>
-    <hr />` .Params.basename }}
+    <hr />` site.Params.sourceRepository site.Params.sourceRepository .Params.basename }}
     {{- /* Content starts with the page title (<h1>): put the note below it. */}}
     {{ replace .Content "</h1>" (print "</h1>" $note) 1 | safeHTML }}
   </div>

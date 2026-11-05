@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Newsletter #10 - Neovim v0.4.4"
 date: 2020-10-28
 category: newsletter

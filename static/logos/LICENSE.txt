@@ -1,0 +1,9 @@
+Rustvim logos
+
+The Rustvim logo adaptations are licensed under the Apache License,
+Version 2.0:
+https://www.apache.org/licenses/LICENSE-2.0
+
+The original logos are by Jason Long, licensed under CC BY 3.0.
+https://neovim.io/
+https://creativecommons.org/licenses/by/3.0/

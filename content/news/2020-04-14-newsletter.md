@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Newsletter #9 - Three's company"
 date: 2020-04-14
 category: newsletter

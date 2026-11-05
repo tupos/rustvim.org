@@ -1,0 +1,7 @@
+{{- with site.GetPage "/upstream-roadmap" -}}
+  {{- $content := replace .Content "<h3" "<h4" -}}
+  {{- $content = replace $content "</h3>" "</h4>" -}}
+  {{- $content = replace $content "<h2" "<h3" -}}
+  {{- $content = replace $content "</h2>" "</h3>" -}}
+  {{- $content | safeHTML -}}
+{{- end -}}

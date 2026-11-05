@@ -1,10 +1,10 @@
 #!/usr/bin/env -S nvim -l
 
--- This script generates the HTML content pages for the Neovim docs on the website.
+-- This script generates the HTML content pages for the Rustvim docs on the website.
 --
--- The source documentation lives in `runtime/doc` inside the Neovim repository and is written in
+-- The source documentation lives in `runtime/doc` inside the Rustvim repository and is written in
 -- Vimdoc. The actual Vimdoc to HTML conversion is handled primarily by `src/gen/gen_help_html.lua`
--- from the neovim/neovim repository.
+-- from the tupos/rustvim repository.
 --
 -- The generation process has two stages:
 --
@@ -21,10 +21,10 @@
 -- (at `/doc/install/`) and BUILD.md (`/doc/build/`).
 --
 -- Usage:
---   ./script <source_dir> [<nvim_repo>]
+--   ./script <source_dir> [<generator_repo>]
 --
---   source_dir  Path to a Neovim repository containing `runtime/doc`
---   nvim_repo   Path to a Neovim repository containing `src/gen/gen_help_html.lua`
+--   source_dir  Path to a Rustvim repository containing `runtime/doc`
+--   generator_repo   Path to a Rustvim repository containing `src/gen/gen_help_html.lua`
 --               (defaults to `source_dir` if omitted)
 --               [For future use cases where versioned docs might be published]
 
@@ -38,14 +38,14 @@ end
 local function usage()
   local script = vim.fs.basename(_G.arg[0])
   errprint(vim.text.indent(0, [[
-    Usage: ./%s <source_dir> [<nvim_repo>]
+    Usage: ./%s <source_dir> [<generator_repo>]
 
     Arguments:
-      source_dir     Path to the Neovim repository with runtime/doc files
-      nvim_repo      Path to the Neovim repository with src/gen/gen_help_html.lua script
+      source_dir     Path to the Rustvim repository with runtime/doc files
+      generator_repo      Path to the Rustvim repository with src/gen/gen_help_html.lua script
 
     Example:
-      ./%s ~/Documents/neovim
+      ./%s ~/Documents/rustvim
     ]]):format(script, script))
 end
 
@@ -74,14 +74,14 @@ local function main()
   end
 
   local srcdir = _G.arg[1]
-  local nvim_repo = _G.arg[2] or _G.arg[1]
+  local generator_repo = _G.arg[2] or _G.arg[1]
 
   local docdir = joinpath(srcdir, 'runtime/doc')
   local usercontent = 'content/doc/user'
 
   vim.cmd(('helptags ++t %s'):format(docdir))
   -- Generate html pages from the Vimdoc files
-  local genhelp = dofile(joinpath(nvim_repo, 'src/gen/gen_help_html.lua'))
+  local genhelp = dofile(joinpath(generator_repo, 'src/gen/gen_help_html.lua'))
   local res = genhelp.gen('html', docdir, usercontent, nil, commit_hash(srcdir))
   --                                           ^ { 'lua.txt', 'starting.txt', }
 

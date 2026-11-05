@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "What Neovim shipped in 2022"
 date: 2022-12-31
 category: newsletter

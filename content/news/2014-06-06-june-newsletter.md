@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Newsletter #1 - A New Hope"
 date: 2014-06-06
 category: newsletter

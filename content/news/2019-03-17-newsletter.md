@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Google Summer of Code 2019"
 date: 2019-03-17
 category: newsletter

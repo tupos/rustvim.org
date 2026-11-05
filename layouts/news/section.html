@@ -2,7 +2,8 @@
 <!-- This is for the /news/index.html (content/news/_index.md) page -->
 <section class="front-section">
     <div class="newsletter container golden-grid">
-        {{ with index .CurrentSection.RegularPages 0 }}
+        {{ $news := where (where .CurrentSection.RegularPages "Layout" "ne" "list") "Params.upstream" "ne" true }}
+        {{ with index $news 0 }}
         <div class="col-wide">
             <h1>{{ .Title }}</h1>
 

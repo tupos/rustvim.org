@@ -1,6 +1,13 @@
 {{ define "main" }}
 <div class="newsletter container golden-grid">
     <div class="col-wide">
+        {{ if .Params.upstream }}
+        <aside class="upstream-notice" aria-label="Upstream archive">
+            <strong>Upstream Neovim archive</strong>
+            <p>This is an original Neovim announcement, preserved as upstream history.
+                For Rustvim updates, visit <a href="/news/">Rustvim News</a>.</p>
+        </aside>
+        {{ end }}
         <div class="post-header">
             <h1>{{ .Title }}</h1>
             <div style="margin-top: 0.5em; margin-bottom: 0.5em;">

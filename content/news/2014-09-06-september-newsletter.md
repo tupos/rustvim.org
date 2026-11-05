@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Newsletter #3 - Better Late than Never"
 date: 2014-09-06
 category: newsletter

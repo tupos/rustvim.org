@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Newsletter #5 - Out of the Box"
 date: 2015-04-03
 category: newsletter

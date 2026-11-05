@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Newsletter #2 - Perchance to Dream"
 date: 2014-07-04
 category: newsletter

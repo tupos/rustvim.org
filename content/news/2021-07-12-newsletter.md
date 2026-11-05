@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Neovim News #11 - The Christmas Issue"
 date: 2021-07-12
 category: newsletter

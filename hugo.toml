@@ -1,6 +1,6 @@
-baseURL = 'https://neovim.io/'
+baseURL = 'https://rustvim.org/'
 locale = 'en-US'
-title = 'Neovim'
+title = 'Rustvim'
 
 # needed for og:description to be the website description (below in [params])
 summaryLength = 0
@@ -22,14 +22,16 @@ summaryLength = 0
   path = "/"
 
 [params]
-  description = "hyperextensible Vim-based text editor"
+  description = "a Vim-based editor evolving in Rust"
+  sourceRepository = "https://github.com/tupos/rustvim"
+  websiteRepository = "https://github.com/tupos/rustvim.org"
 
   # Used for social previews
   images = ['/logos/rustvim-logo.png']
 
   [params.news]
-    name = "Neovim Newsletter"
-    authors = "Neovim Community"
+    name = "Rustvim News"
+    authors = "Rustvim Contributors"
     url = "/news"
     feed = "/news.xml"
 
@@ -38,7 +40,7 @@ summaryLength = 0
     [markup.goldmark.renderer]
       unsafe = true
 
-  # XXX: somehow this accidentally enables use of the Neovim palette (css/neovim-hi.css),
+  # XXX: somehow this accidentally enables use of the syntax palette (css/rustvim-hi.css),
   # presumably those css classes match whatever Hugo is using to provide syntax highlighting.
   [markup.highlight]
     noClasses = false
@@ -74,7 +76,7 @@ summaryLength = 0
 
 [[menus.main]]
   name = "Development"
-  url = "https://github.com/neovim/neovim"
+  url = "https://github.com/tupos/rustvim"
   weight = 30
 
 [[menus.main]]

@@ -74,7 +74,7 @@ a {
 
 /* Add an "external link" icon next to anchors
  * (but not when they're buttons or wrap images) */
-a[href^="http"]:not([href*="neovim.io"]):not(.btn):not(:has(img))::after {
+a[href^="http"]:not([href^="https://rustvim.org/"]):not(.btn):not(:has(img))::after {
   content: '';
   display: inline-block;
   width: 0.75em;
@@ -274,14 +274,7 @@ samp {
     order: 3;
   }
 
-  #docsearch {
-    margin-left: auto;
-    margin-right: 1em;
-    order: 2;
-  }
-
-  /* The expanded menu is flex-basis:100%; ordering it last makes it wrap
-     below the top row so docsearch + toggler stay put when it opens. */
+  /* Keep the expanded menu below the logo and menu toggle. */
   .navbar-collapse {
     order: 4;
   }
@@ -293,9 +286,7 @@ samp {
 .navbar-brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
   color: var(--link-color);
-  font-size: 1.75rem;
   text-decoration: none;
 }
 .navbar-brand:hover,
@@ -308,7 +299,7 @@ samp {
  * Menu dropdown
  */
 
-#neovimDropdown.show {
+#rustvimDropdown.show {
   color: var(--accent-color);
 }
 
@@ -377,6 +368,17 @@ samp {
 
 .front-section.shaded {
   background-color: var(--accent-bg-color);
+}
+
+.upstream-notice {
+  padding: 1em;
+  margin: 1em 0;
+  border-left: 0.25em solid var(--border-color);
+  background-color: var(--accent-bg-color);
+}
+
+.upstream-notice p:last-child {
+  margin-bottom: 0;
 }
 
 /*
@@ -556,122 +558,6 @@ iframe.poll {
  .news-section table {
     margin-top: 1rem;
  }
-
-/*
- * DocSearch overrides
- */
-
-:root {
-  --docsearch-primary-color: var(--accent-color);
-  --docsearch-text-color: var(--fg-color);
-  --docsearch-highlight-color: var(--link-color);
-  --docsearch-container-background: rgba(62, 43, 36, 0.35);
-
-  /* modal */
-  --docsearch-modal-background: var(--bg-color);
-  --docsearch-modal-shadow: none;
-
-  /* searchbox */
-  --docsearch-searchbox-background: var(--accent-bg-color);
-  --docsearch-searchbox-focus-background: var(--accent-bg-color);
-
-  /* hit */
-  --docsearch-hit-color: var(--docsearch-text-color);
-  --docsearch-hit-active-color: var(--bg-color);
-  --docsearch-hit-background: var(--accent-bg-color);
-  --docsearch-hit-shadow: none;
-
-  /* key */
-  --docsearch-key-gradient: transparent;
-  --docsearch-key-shadow: none;
-
-  /* footer */
-  --docsearch-footer-background: var(--bg-color);
-  --docsearch-footer-shadow: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --docsearch-primary-color: var(--accent-color);
-    --docsearch-text-color: var(--fg-color);
-    --docsearch-highlight-color: var(--link-color);
-    --docsearch-container-background: rgba(20, 13, 10, 0.75);
-
-    /* modal */
-    --docsearch-modal-background: var(--bg-color);
-    --docsearch-modal-shadow: none;
-
-    /* searchbox */
-    --docsearch-searchbox-background: var(--accent-bg-color);
-    --docsearch-searchbox-focus-background: var(--accent-bg-color);
-
-    /* hit */
-    --docsearch-hit-color: var(--docsearch-text-color);
-    --docsearch-hit-active-color: var(--bg-color);
-    --docsearch-hit-background: var(--accent-bg-color);
-    --docsearch-hit-shadow: none;
-
-    /* key */
-    --docsearch-key-gradient: transparent;
-    --docsearch-key-shadow: none;
-
-    /* footer */
-    --docsearch-footer-background: var(--bg-color);
-    --docsearch-footer-shadow: none;
-  }
-}
-
-.DocSearch mark {
-  padding: 0;
-}
-
-.DocSearch footer {
-  border-top: 1px solid var(--link-color)
-}
-
-.DocSearch-Button-Key {
-  top: 0;
-  padding: 0;
-  margin-right: 0;
-  width: auto;
-  background: var(--bg-color);
-  box-shadow: none;
-}
-
-.DocSearch-Button-Keys {
-  border-radius: 4px;
-  padding: 0 6px;
-  min-width: auto;
-  border: 1px solid var(--border-color);
-  background: transparent;
-}
-
-.DocSearch-Button {
-  color: var(--link-color);
-  background: var(--accent-bg-color);
-  border: 1px solid var(--border-color);
-  box-shadow: none;
-}
-
-.DocSearch-Button .DocSearch-Search-Icon,
-.DocSearch-Button .DocSearch-Button-Placeholder,
-.DocSearch-Button .DocSearch-Button-Keys,
-.DocSearch-Button .DocSearch-Button-Key {
-  color: inherit;
-}
-
-.DocSearch-Button:hover,
-.DocSearch-Button:focus {
-  color: var(--accent-color);
-  background: var(--selected-bg-color);
-  border-color: var(--link-color);
-  box-shadow: none;
-}
-
-.DocSearch-Button:focus-visible {
-  outline: 2px solid var(--link-color);
-  outline-offset: 2px;
-}
 
 /* Force footer to bottom of viewport. */
 

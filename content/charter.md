@@ -3,23 +3,22 @@ title: Vision
 layout: mainpage
 ---
 
-Neovim is a refactor, and sometimes redactor, in the tradition of Vim (which
-itself derives from [Stevie](https://en.wikipedia.org/wiki/Stevie_%28text_editor%29)).
-It is not a rewrite but a continuation and extension of Vim. Many clones and
-derivatives exist, some very clever—but none are Vim.
-
-Neovim is for users who want the good parts of Vim, and more.
+Rustvim continues the tradition of Vim while incrementally moving editor
+internals to Rust. The migration aims to preserve established editing behavior
+and plugin interfaces while improving the implementation's maintainability.
 
 ### Goals
 
-Extensible. Usable. Vim.
+Compatible. Maintainable. Extensible.
 
 - Retain the character of Vim—fast, versatile, quasi-minimal.
+- Move implementation logic into safe Rust, with small, explicit C interfaces.
+- Validate migrated components against existing editor behavior.
 - Enable new contributors, remove barriers to entry.
 - Unblock plugin authors.
 - Deliver a first-class Lua interface, as an alternative to Vimscript.
 - Favor composability (long-term thinking) instead of new, incompatible concepts (short-term thinking).
-- Leverage ongoing Vim development.
+- Follow relevant upstream editor development.
 - Optimize "out of the box", for new users but especially regular users.
 - Deliver a consistent cross-platform experience, targeting all libuv-supported platforms.
 - In matters of taste/ambiguity, favor tradition/compatibility...
@@ -29,11 +28,11 @@ Extensible. Usable. Vim.
 
 - Support Vim9script
 - Turn Vim into an IDE
-- Limit third-party applications (such as IDEs!) built with Neovim
+- Limit third-party applications (such as IDEs!) built with Rustvim
 - Deprecate Vimscript
 - Conform to POSIX vi
 
 ### Project management
 
-- Maintainers: [Neovim team](https://github.com/orgs/neovim/people)
-- Maintainer notes: [MAINTAIN.md](https://github.com/neovim/neovim/blob/master/MAINTAIN.md)
+- Development: [Rustvim on GitHub](https://github.com/tupos/rustvim)
+- Contributing: [CONTRIBUTING.md](https://github.com/tupos/rustvim/blob/master/CONTRIBUTING.md)

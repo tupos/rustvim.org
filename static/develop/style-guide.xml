@@ -15,7 +15,7 @@ id ID #REQUIRED>
     <body>
      <h2>Moved to ":help dev-style"</h2>
      <p>Style guidelines now live at <code>:help dev-style</code></p>
-     <p><a href="https://neovim.io/doc/user/dev_style.html#dev-style">https://neovim.io/doc/user/dev_style.html#dev-style</a></p>
+     <p><a href="https://rustvim.org/doc/user/dev_style.html#dev-style">https://rustvim.org/doc/user/dev_style.html#dev-style</a></p>
     </body>
    </html>
   </xsl:template>

@@ -8,7 +8,7 @@ redirect_from:
 
 ### Extensible
 
-- [Repeat anything](https://neovim.io/doc/user/repeat/#excalibur) with `CmdAtom`.
+- [Repeat anything](/doc/user/repeat/#excalibur) with `CmdAtom`.
 - Create [Lua plugins](/doc/user/lua-plugin/#lua-plugin-new) easily.
   Your config lives in `init.lua`!
 - API is [discoverable](/doc/user/api/#api-mapping),
@@ -28,7 +28,7 @@ redirect_from:
 - [LSP](/doc/user/lsp/) provides semantic code inspection and refactoring.
 - Multiplex with [:connect, :detach, :restart](https://www.youtube.com/watch?v=bqWIibaUN_A&list=PLvTJMxH60GZ8EJszAxm-IxUv12xaCcUlG)
   (like tmux, but works everywhere).
-- No "Press ENTER" messages ([ui2](https://neovim.io/doc/user/lua/#ui2)).
+- No "Press ENTER" messages ([ui2](/doc/user/lua/#ui2)).
 - Works the same everywhere: one build-type, one command.
 - Modern terminal features are enabled by default: progress bar, cursor styling,
   focus events, bracketed paste, ….
@@ -43,29 +43,21 @@ redirect_from:
 
 
 {{% scratch "chat" %}}
-## Chat
+## Community
 
-- [Follow \@Neovim on X](https://x.com/Neovim),
-  [Mastodon](https://hachyderm.io/@neovim),
-  [Bluesky](https://bsky.app/profile/neovim.io)
-- Discuss the project in [GitHub
-  Discussions](https://github.com/neovim/neovim/discussions), or chat in
-  [#neovim:matrix.org](https://matrix.to/#/#neovim:matrix.org) or
-  #neovim on `irc.libera.chat`.
-- Contribute code, report bugs and request features at
-  [GitHub](https://github.com/neovim/neovim).
-- Ask usage and configuration questions at [GitHub
-  Discussions](https://github.com/neovim/neovim/discussions) or
-  [vi.stackexchange.com](https://vi.stackexchange.com).
+- Follow development and contribute to [Rustvim on GitHub](https://github.com/tupos/rustvim).
+- [Report bugs and request features](https://github.com/tupos/rustvim/issues).
+- Read the [news](/news/) and [roadmap](/roadmap/) for project updates.
 {{% /scratch %}}
 
 {{% scratch "GUIs" %}}
 ## GUIs
 
-Neovim UIs are "inverted plugins". Here are some popular ones:
-- [Firenvim](https://github.com/glacambre/firenvim) (Nvim in your web
+Rustvim retains the editor UI protocol. These third-party interfaces may
+need configuration to use a Rustvim build:
+- [Firenvim](https://github.com/glacambre/firenvim) (an editor in your web
   browser!)
-- [vscode-neovim](https://github.com/vscode-neovim/vscode-neovim) (Nvim
+- [vscode-neovim](https://github.com/vscode-neovim/vscode-neovim) (an editor
   in VSCode!)
 - [Neovide](https://neovide.dev/)
 - [Goneovim](https://github.com/akiyosi/goneovim)
@@ -82,19 +74,18 @@ Neovim UIs are "inverted plugins". Here are some popular ones:
 ## FAQ {#faqs}
 
 **What is the project status?**\
-The current [stable release](https://github.com/neovim/neovim/releases/latest)
-version is `0.12` ([RSS](https://github.com/neovim/neovim/tags.atom)). See the
-[roadmap](/roadmap/) for progress and plans.
+Rustvim is under active development toward release **0.1.0**. See the
+[news](/news/) and [roadmap](/roadmap/) for progress and plans.
 
-**Is Neovim trying to turn Vim into an IDE?**\
-With 30% less source-code than Vim, the [vision](/charter/) of Neovim is to
-enable new applications without compromising Vim's traditional roles.
+**Is Rustvim trying to turn Vim into an IDE?**\
+The [vision](/charter/) of Rustvim is to preserve Vim's editing model while
+improving the implementation and supporting extensions and external interfaces.
 
-**Will Neovim deprecate Vimscript?**\
-No. Lua is built-in, but Vimscript is supported with the [world's most advanced
-Vimscript engine](/doc/user/api/#nvim_parse_expression()).
+**Will Rustvim deprecate Vimscript?**\
+Rustvim retains Vimscript support alongside its built-in Lua interface.
 
-**Which plugins does Neovim support?**\
-Vim 8.x plugins and [much
-more](https://github.com/neovim/neovim/wiki/Related-projects).
+**Which plugins does Rustvim support?**\
+Rustvim aims to preserve existing Vimscript and Lua plugin behavior as the
+implementation moves to Rust. Report compatibility issues in the
+[issue tracker](https://github.com/tupos/rustvim/issues).
 {{% /scratch %}}

@@ -2,8 +2,7 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a href="/" class="navbar-brand" {{ if eq .RelPermalink "/" }}aria-current="page"{{ end }} aria-label="Rustvim home">
-        <img src="{{ "logos/rustvim-logo.png" | relURL }}" alt="" width="50" height="50">
-        <span>Rustvim</span>
+        {{ partial "rustvim-logo.html" . }}
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -30,9 +29,9 @@
               href="#" role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              id="neovimDropdown"
+              id="rustvimDropdown"
             >{{ .Name }}</a>
-            <ul class="dropdown-menu" aria-labelledby="neovimDropdown">
+            <ul class="dropdown-menu" aria-labelledby="rustvimDropdown">
               {{ range .Children }}
 
               <li>
@@ -60,9 +59,6 @@
           {{ end }} {{ end }}
         </ul>
       </div>
-
-      <!-- algolia docsearch https://docsearch.algolia.com/docs/docsearch -->
-      <div id="docsearch"></div>
 
     </div>
   </nav>

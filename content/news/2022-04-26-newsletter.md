@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Neovim News #12 - What's New In Neovim 0.7"
 date: 2022-04-26
 category: newsletter

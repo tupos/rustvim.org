@@ -1,7 +1,7 @@
 /*
- * Neovim color palette for highlighting markdown codeblocks.
+ * Syntax palette adapted from Neovim for highlighting markdown codeblocks.
  * For use with Hugo.
- * See also: static/highlight/styles/neovim.min.css
+ * See also: static/highlight/styles/rustvim.min.css
  * License: Apache-2.0
  */
 
@@ -25,7 +25,7 @@
   --hi-b-white: light-dark(#9b9ea4, #ebeef5);
 }
 
-/*! Neovim-based syntax highlighting */
+/*! Syntax highlighting adapted from Neovim */
 .highlight,.highlight pre,.highlight table { color: var(--hi-b-white) !important; }
 .highlight .err { color: var(--hi-b-red) !important; }
 .highlight .cs { color: var(--hi-cyan) !important; }

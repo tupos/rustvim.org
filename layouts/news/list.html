@@ -4,8 +4,9 @@
         <div class="newsletter col-wide">
 
             <h1>{{ .Title }}</h1>
+            {{ .Content }}
 
-            {{ range (sort (where .CurrentSection.Pages "Layout" "ne" "list") "Date" "asc") }}
+            {{ range (sort (where .CurrentSection.RegularPages "Params.upstream" true) "Date" "desc") }}
             <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
             {{ end }}
 

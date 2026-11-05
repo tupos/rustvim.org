@@ -3,7 +3,7 @@ title: Screenshots
 layout: mainpage
 ---
 
-These screenshots demo what's possible. They may use unreleased features,
+These inherited screenshots demonstrate editor features and third-party interfaces. They may use unreleased features,
 third-party UIs, plugins, or config changes.
 
 ## Features
@@ -47,7 +47,7 @@ via checkhealth vim.treesitter" >
 
 ### Live color preview
 
-If your LSP server supports the feature, neovim can render colors out of the box:
+If your LSP server supports the feature, Rustvim can render colors out of the box:
 
 <img src="/images/showcase/textdocument-color.png" alt="Check your LSP server supports textDocument/color" >
 
@@ -60,7 +60,7 @@ cmdline (here with [tiny-cmdline.nvim](https://github.com/rachartier/tiny-cmdlin
 
 ### Progress 
 
-Neovim can emit 'progress' events the terminal can show, for instance as a blue progress bar at the top in
+Rustvim can emit 'progress' events the terminal can show, for instance as a blue progress bar at the top in
 ghostty:
 
 <video controls>
@@ -74,7 +74,7 @@ ghostty:
 
 ## GUI
 
-Graphical interfaces are not packaged with Neovim. GUIs are not limited by terminal capabilities and can choose to override the rendering of certain neovim elements (cursor, tabline, popup menu, etc). This section showcases only a handful of them, see [Neovim's wiki](https://github.com/neovim/neovim/wiki/Related-projects#gui) for a list of many of the available GUIs.
+Graphical interfaces are not packaged with Rustvim. GUIs are not limited by terminal capabilities and can choose to override the rendering of certain editor elements (cursor, tabline, popup menu, etc). This section showcases only a handful of them, see the [upstream GUI directory](https://github.com/neovim/neovim/wiki/Related-projects#gui) for a list of many of the available GUIs.
 
 ### Treeview and an externalized popup menu in [Neovim Qt](https://github.com/equalsraf/neovim-qt)
 

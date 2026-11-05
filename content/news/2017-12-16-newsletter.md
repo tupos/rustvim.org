@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Newsletter #8 - Open up the Windows"
 date: 2017-12-16
 category: newsletter

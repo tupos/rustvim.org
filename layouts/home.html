@@ -15,19 +15,19 @@
         <div class="col-narrow">
             <div class="news-section">
                 <h2 id="news">News</h2>
-                {{/* <dl class="nvim-posts"> */}}
+                {{ $news := where (where .Site.RegularPages "Section" "news") "Params.upstream" "ne" true }}
+                {{ $news = where $news "Layout" "ne" "list" }}
+                {{ with first 2 $news }}
                     <table>
-                        {{ range first 2 .Site.RegularPages }}
+                        {{ range . }}
                         <tr>
                             <td><a href="{{ .RelPermalink }}">{{ .Title }}</a>&nbsp;&nbsp; </td>
                             <td style="white-space: nowrap; text-align: right">{{ .Date.Format "2006.01" }}</td>
                         </tr>
-                        {{/* <dd></dd> */}}
                         {{ end }}
                     </table>
-                    {{/*
-                </dl> */}}
-                <p><a href="/news/archive/">More…</a></p>
+                {{ end }}
+                <p><a href="/news/">More news…</a></p>
             </div>
         </div>
     </div>
@@ -52,12 +52,15 @@
 
 <section class="front-section shaded">
     <div class="container">
-        <h2>Marketing</h2>
+        <h2>Rustvim logos</h2>
         <ul>
-            <li><a href="/logos/neovim-logos.zip">Neovim-logos.zip</a> <span class="light">(1.1 MB)</span></li>
-            <li>Neovim logo by <a href="http://x.com/jasonlong">Jason Long</a>, <a
-                    href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</li>
+            <li><a href="/logos/rustvim-logos.zip">Download all Rustvim logos (ZIP)</a></li>
+            <li><a href="/logos/rustvim-logo.png">Rust Takeover mark (PNG)</a></li>
         </ul>
+        <p class="small">Rustvim logo adaptations are licensed under the
+            <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.
+            The original logos are by <a href="https://x.com/jasonlong">Jason Long</a>,
+            licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     </div>
 </section>
 {{ end }}

@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Newsletter #4 - Thanksvimming Day"
 date: 2014-11-07
 category: newsletter

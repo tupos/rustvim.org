@@ -3,13 +3,13 @@
 {{ if .InSection (site.GetPage "/doc/user") }}
     <div class="generator-stats">
       Generated at {{ now.Format "2006-01-02 15:04" }} from
-      <code><a href="https://github.com/neovim/neovim/commit/{{ .Params.commit }}">
+      <code><a href="{{ site.Params.sourceRepository }}/commit/{{ .Params.commit }}">
         {{ substr .Params.commit 0 7 }}
       </a></code>
     </div>
     <div class="generator-stats">
       parse_errors: {{ .Params.parseErrors }}
-      (<a href="{{ .Params.bugUrl }}" target="_blank">report docs bug...</a>)
+      (<a href="{{ site.Params.sourceRepository }}/issues/new" target="_blank">report docs bug...</a>)
       | <span title="{{ .Params.noiseLines }}">noise_lines: {{ .Params.noiseLinesCount }}</span>
     </div>
     <div></div>
@@ -24,7 +24,7 @@
     </div>
 
     <div>
-      This site's source is <a href="https://github.com/neovim/neovim.github.io/">hosted on GitHub</a>.
+      This site's source is <a href="{{ site.Params.websiteRepository }}">hosted on GitHub</a>.
     </div>
 {{ end }}
 </div>

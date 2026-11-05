@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Newsletter #7 - Summer of Road"
 date: 2016-11-01
 category: newsletter

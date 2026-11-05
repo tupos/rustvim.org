@@ -4,16 +4,17 @@ description: "Shared build logic"
 runs:
   using: "composite"
   steps:
-    - name: Checkout neovim/neovim
+    - name: Checkout tupos/rustvim
       uses: actions/checkout@v6
       with:
-        repository: neovim/neovim
-        path: 'neovim'
-    - name: Install Nvim
+        repository: tupos/rustvim
+        path: 'rustvim'
+    - name: Install Rustvim
       shell: bash
       run: |
-        cd ./neovim
-        sudo make install
+        cd ./rustvim
+        make -j"$(nproc)"
+        sudo cmake --install build
     - name: Install Hugo CLI
       shell: bash
       env:
@@ -22,23 +23,23 @@ runs:
         wget -O ${{ runner.temp }}/hugo.deb \
           https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
         && sudo dpkg -i ${{ runner.temp }}/hugo.deb
-    - name: Get Nvim docs
+    - name: Get Rustvim docs
       shell: bash
       run: |
-        ./gendoc.lua ./neovim
+        ./gendoc.lua ./rustvim
 
-    # :help docs PDF, served at /doc/user/nvim-help.pdf. After gendoc.lua, which builds the helptags.
+    # :help docs PDF, served at /doc/user/rustvim-help.pdf. After gendoc.lua, which builds the helptags.
     #
     # TODO: --generate-pdf-document-outline might be nice, but bloats size from 15 => 50 MB.
     - name: Generate help PDF
       shell: bash
       run: |
-        (cd ./neovim && nvim -V1 -es --clean +"lua require('src.gen.gen_help_html').gen('print', './runtime/doc', '${{ runner.temp }}/print')" +q)
+        (cd ./rustvim && nvim -V1 -es --clean +"lua require('src.gen.gen_help_html').gen('print', './runtime/doc', '${{ runner.temp }}/print')" +q)
         mkdir -p static/doc/user
         # --no-sandbox: Ubuntu restricts the user namespaces that Chrome's sandbox needs.
         google-chrome --headless --no-sandbox --no-pdf-header-footer --disable-pdf-tagging \
-          --print-to-pdf=static/doc/user/nvim-help.pdf "${{ runner.temp }}/print/print.html"
-        test -s static/doc/user/nvim-help.pdf
+          --print-to-pdf=static/doc/user/rustvim-help.pdf "${{ runner.temp }}/print/print.html"
+        test -s static/doc/user/rustvim-help.pdf
 
     - name: Build with Hugo
       shell: bash

@@ -1,4 +1,5 @@
 ---
+upstream: true
 title: "Newsletter #6 - Ship it!"
 date: 2015-12-09
 category: newsletter
