@@ -7,7 +7,7 @@ title: What is Rustvim?
 Rustvim is a Vim-based text editor whose implementation is being incrementally
 migrated to Rust, with an emphasis on compatibility and maintainability.
 
-- [Vision](/charter/)
+- [Vision](/vision/)
 - [Roadmap](/roadmap/)
 - [Contributing](https://github.com/tupos/rustvim/blob/master/CONTRIBUTING.md)
 

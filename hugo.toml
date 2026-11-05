@@ -53,7 +53,7 @@ summaryLength = 0
 
 [[menus.main]]
   name = "Vision"
-  url = "/charter/"
+  url = "/vision/"
   parent = "about"
   weight = 1
 

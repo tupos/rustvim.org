@@ -78,14 +78,17 @@ Rustvim is under active development toward release **0.1.0**. See the
 [news](/news/) and [roadmap](/roadmap/) for progress and plans.
 
 **Is Rustvim trying to turn Vim into an IDE?**\
-The [vision](/charter/) of Rustvim is to preserve Vim's editing model while
+The [vision](/vision/) of Rustvim is to preserve Vim's editing model while
 improving the implementation and supporting extensions and external interfaces.
+In addition, we would like to be able to write an editor in a modern language.
 
 **Will Rustvim deprecate Vimscript?**\
-Rustvim retains Vimscript support alongside its built-in Lua interface.
+No. Rustvim retains Vimscript support alongside its built-in Lua interface.
+In the roadmap we would like to fully support the original vim development.
 
 **Which plugins does Rustvim support?**\
 Rustvim aims to preserve existing Vimscript and Lua plugin behavior as the
-implementation moves to Rust. Report compatibility issues in the
-[issue tracker](https://github.com/tupos/rustvim/issues).
+implementation moves to Rust. We aim to be fully compatible with the neovim
+modulo bugs that will arise during migration. Report compatibility issues in
+the [issue tracker](https://github.com/tupos/rustvim/issues).
 {{% /scratch %}}
