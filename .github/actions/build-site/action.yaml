@@ -9,6 +9,15 @@ runs:
       with:
         repository: tupos/rustvim
         path: 'rustvim'
+    - name: Install Rust toolchain
+      shell: bash
+      working-directory: ./rustvim
+      run: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+          | sh -s -- -y --profile minimal --default-toolchain none
+        source "$HOME/.cargo/env"
+        echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+        rustup show
     - name: Install Rustvim
       shell: bash
       run: |
