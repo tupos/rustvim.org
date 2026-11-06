@@ -1,19 +1,17 @@
 {{ define "main" }}
-<!-- This is for the /news/index.html (content/news/_index.md) page -->
 <section class="front-section">
     <div class="newsletter container golden-grid">
         {{ $news := where (where .CurrentSection.RegularPages "Layout" "ne" "list") "Params.upstream" "ne" true }}
-        {{ with index $news 0 }}
+        {{ $news = sort $news "Date" "desc" }}
         <div class="col-wide">
+            {{ with index $news 0 }}
             <h1>{{ .Title }}</h1>
-
-            <div style="margin-top: 0.5em; margin-bottom: 0.5em;">
-                <a class="release-date" href="{{ .RelPermalink }}">{{ .Date.Format "January 2006" }}</a>
-            </div>
-
+            <p><a class="release-date" href="{{ .RelPermalink }}"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time></a></p>
             {{ .Content }}
+            {{ else }}
+            <p>No news posts yet.</p>
+            {{ end }}
         </div>
-        {{ end }}
 
         {{ partial "news_sidebar.html" . }}
     </div>

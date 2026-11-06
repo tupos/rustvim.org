@@ -1,10 +1,24 @@
 <div class="col-narrow">
   <h3>Rustvim News</h3>
+  {{ if .IsSection }}
+  {{ $news := where (where site.RegularPages "Section" "news") "Params.upstream" "ne" true }}
+  {{ $news = where $news "Layout" "ne" "list" }}
+  {{ with after 1 (sort $news "Date" "desc") }}
+  <ul>
+    {{ range . }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+  {{ end }}
+
   <p>
-    Follow <a href="/news/">Rustvim updates</a> or browse the
-    <a href="/news/archive/">upstream Neovim archive</a>.
-    There's also an <a href="{{ .Site.Params.news.feed }}">RSS feed</a>.
+    Follow <a href="/news/">Rustvim updates</a> or subscribe to the
+    <a href="{{ .Site.Params.news.feed }}">RSS feed</a>.
   </p>
+
+  <h3>Upstream Neovim News</h3>
+  <p>Browse the <a href="/news/archive/">upstream Neovim archive</a>.</p>
 
   {{ partial "whatisrustvim.html" . }}
 </div>
