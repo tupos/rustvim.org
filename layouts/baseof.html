@@ -21,6 +21,7 @@
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="{{ "pagefind/pagefind-component-ui.css" | relURL }}" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
     <!-- Hugo-generated palette for highlighting markdown code blocks. -->
     <!-- <link href="/css/syntax.css" rel="stylesheet"> -->
@@ -42,10 +43,14 @@
 
 <body>
     {{ partial "nav.html" . }}
-    {{ block "main" . }}{{ end }}
+    <main{{ if ne .RelPermalink "/404.html" }} data-pagefind-body{{ end }}>
+        {{ block "main" . }}{{ end }}
+    </main>
 
     {{ partial "footer.html" . }}
 
+    <pagefind-modal></pagefind-modal>
+    <script src="{{ "pagefind/pagefind-component-ui.js" | relURL }}" type="module"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 

@@ -1,4 +1,4 @@
-<div class="col-narrow">
+<div class="col-narrow" data-pagefind-ignore>
   <h3>Rustvim News</h3>
   {{ if .IsSection }}
   {{ $news := where (where site.RegularPages "Section" "news") "Params.upstream" "ne" true }}

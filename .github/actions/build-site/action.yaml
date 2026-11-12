@@ -50,12 +50,17 @@ runs:
           --print-to-pdf=static/doc/user/rustvim-help.pdf "${{ runner.temp }}/print/print.html"
         test -s static/doc/user/rustvim-help.pdf
 
-    - name: Build with Hugo
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: '24'
+
+    - name: Build site and search index
       shell: bash
       env:
         # For backward compatibility with Hugo modules
         HUGO_ENVIRONMENT: production
         HUGO_ENV: production
       run: |
-        hugo --gc
+        node scripts/build-site.mjs
 

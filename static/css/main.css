@@ -15,6 +15,20 @@
   --button-edge-color: #7c2d18;
   --button-hover-bg-color: #87321b;
   --button-fg-color: #fff9f4;
+
+  /* Pagefind follows the site's light and dark rust palettes. */
+  --pf-font: var(--sans-serif-fonts);
+  --pf-text: var(--fg-color);
+  --pf-text-secondary: var(--fg-color);
+  --pf-text-muted: var(--link-color);
+  --pf-background: var(--bg-color);
+  --pf-border: var(--border-color);
+  --pf-border-focus: var(--link-color);
+  --pf-outline-focus: var(--link-color);
+  --pf-hover: var(--accent-bg-color);
+  --pf-mark: var(--link-color);
+  --pf-skeleton: var(--accent-bg-color);
+  --pf-skeleton-shine: var(--bg-color);
 }
 
 @media (prefers-color-scheme: dark) {

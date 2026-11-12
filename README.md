@@ -13,20 +13,21 @@ Fork this repository and send a pull request.
 
 This site is statically generated using Hugo.
 
-1. Install Hugo:
+1. Install Hugo and Node.js:
    ```bash
-   brew install hugo
+   brew install hugo node
    ```
 2. Optionally generate documentation from a Rustvim source checkout:
    ```bash
    ./gendoc.lua <path>/<to>/rustvim
    ```
    The editor executable is currently named `nvim`; it must be on `PATH`.
-3. Build and view the website locally:
+3. Build and preview the website with search:
    ```bash
-   hugo serve -D
+   node scripts/build-site.mjs --serve
    ```
-4. Open http://localhost:1313/.
+4. Open http://localhost:1313/. Hugo live reload and search indexing update
+   automatically as you edit.
 
 ## Maintenance
 
@@ -49,8 +50,27 @@ To include Markdown separately from the main content, use the [scratch]
 
 ### Site search
 
-TODO: Add Pagefind search. Generate its index from Hugo's built HTML during
-site builds and publish the search assets with the website.
+Search uses [Pagefind](https://pagefind.app/). The shared build script runs
+Hugo, then Pagefind 1.6.0 to index the generated HTML and write the search
+index and browser assets to `public/pagefind/`. GitHub Actions runs the same
+script after generating the editor documentation, and publishes the search
+assets with the website.
+
+The header's search button opens a dialog. Search includes the main page
+content and generated editor documentation; navigation, sidebars, redirects,
+and the 404 page are excluded. Search assets are served from this website.
+
+Run `node scripts/build-site.mjs` for a production build. Use
+`node scripts/build-site.mjs --serve` for local development: it builds the
+initial index, starts Hugo's live server, and watches rendered HTML to
+refresh search after rebuilds. A fresh temporary build keeps deleted pages
+out of the index. Pagefind's own output is excluded from the watcher to avoid
+rebuild loops. Hugo server options can follow `--serve`, for example
+`--port 1314`.
+
+Node.js 24 is used in CI. Node.js 22 or newer is required for the development
+watcher. Plain `hugo server` still works for content previews, but does not
+refresh the search index.
 
 ### Code highlighting
 

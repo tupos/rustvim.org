@@ -2,7 +2,7 @@
 <div class="container golden-grid help-body">
   <div class="col-wide">
     {{- $note := printf `
-    <p>
+    <p data-pagefind-ignore>
       <i>
         Rustvim <code>:help</code> pages, <a
           href="%s/blob/master/src/gen/gen_help_html.lua">generated</a>
@@ -15,7 +15,7 @@
     {{ replace .Content "</h1>" (print "</h1>" $note) 1 | safeHTML }}
   </div>
 
-  <div class="col-narrow toc">
+  <div class="col-narrow toc" data-pagefind-ignore>
     <div><a href="/doc/user/">Main</a></div>
     <div><a href="/doc/user/vimindex/">Commands index</a></div>
     <div><a href="/doc/user/quickref/">Quick reference</a></div>
