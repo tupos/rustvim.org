@@ -11,7 +11,10 @@ Fork this repository and send a pull request.
 
 ## Setup
 
-This site is statically generated using Hugo.
+This site is statically generated using Hugo. Choose either a local setup or
+the container preview.
+
+### Option 1: Local setup
 
 1. Install Hugo and Node.js:
    ```bash
@@ -28,6 +31,21 @@ This site is statically generated using Hugo.
    ```
 4. Open http://localhost:1313/. Hugo live reload and search indexing update
    automatically as you edit.
+
+### Option 2: Container preview
+
+With Docker installed and the `rootless` context configured, run:
+
+```bash
+./serve.sh
+```
+
+The script builds a `debian:latest` image with Node.js 24 and Hugo 0.162.1,
+matching CI, then starts the preview using the `rootless` Docker context.
+It mounts this repository at `/workspace` and publishes Hugo's port 1313 at
+http://localhost:1313/. Live reload and search indexing update as you edit.
+Generated files are written into the mounted repository. Press Ctrl+C to stop
+the preview and remove the container.
 
 ## Maintenance
 
