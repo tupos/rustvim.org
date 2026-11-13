@@ -4,7 +4,18 @@ redirect_from:
   - /development-wiki/
 ---
 
-## Features
+## Evolving in Rust
+
+- Gradually replace Neovim's C code with Rust.
+- Stay compatible with existing Neovim configuration and plugins.
+- Replace custom implementations with standard libraries to reduce bugs and
+  simplify maintenance.
+
+## Features inherited from Neovim
+
+Rustvim inherits the features below from upstream [Neovim](https://neovim.io/).
+Our work focuses on evolving the implementation in Rust; see the
+[roadmap](/roadmap/) for Rustvim's development plans.
 
 ### Extensible
 

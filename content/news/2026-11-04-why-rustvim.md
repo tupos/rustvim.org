@@ -5,9 +5,10 @@ category: news
 url: /news/why-rustvim/
 ---
 
-You might ask why we want to rewrite Neovim in Rust. The migration itself
-may not be particularly interesting, and others may have different
-motivations. My reasons are highly subjective:
+**Rustvim is compatible with Neovim today.**
+
+You might ask why we want to rewrite Neovim in Rust. My reasons are highly
+subjective:
 
 - I do not want to write C. I do not think C is well suited to modern
   software development.
@@ -25,7 +26,7 @@ The project goals are:
 
 - Rustvim is a fork of Neovim with a long-term goal: evolve the editor's
   implementation in Rust while preserving the editing model, configuration, and
-  plugin interfaces. We aim to be compatible with Neovim.
+  plugin interfaces. We are compatible with neovim.
 
 - Documentation is another part of the work. The Rustvim Book, built with
   mdBook, should explain how the editor works, how its components fit together,
