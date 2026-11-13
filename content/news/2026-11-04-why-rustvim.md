@@ -25,17 +25,15 @@ The project goals are:
 
 - Rustvim is a fork of Neovim with a long-term goal: evolve the editor's
   implementation in Rust while preserving the editing model, configuration, and
-  plugin interfaces that make Vim-based editors useful. We aim to be compatible
-  with neovim.
+  plugin interfaces. We aim to be compatible with Neovim.
 
-- Documentation is another part of the work. The Rustvim Book and mdBook
-  chapters should explain how the editor works, how its components fit
-  together, and how they can be improved.
+- Documentation is another part of the work. The Rustvim Book, built with
+  mdBook, should explain how the editor works, how its components fit together,
+  and how they operate.
 
-- The motivation is to keep working with a mature editor while improving how
-  its internals can be understood, changed, and maintained. Rust provides tools
-  for making ownership, lifetimes, and component boundaries explicit. Rustvim
-  explores how those tools can improve an existing editor.
+- We want to keep the Neovim editor we love while making its internals easier
+  to understand, change, improve, and maintain. Rust lets us make ownership,
+  lifetimes, and component boundaries explicit.
 
 - The migration is incremental. Existing behavior provides the reference for
   moving components from C to Rust. Compatibility and behavior tests guide the
