@@ -89,3 +89,8 @@ summaryLength = 0
   name = "Documentation"
   url = "/doc/"
   weight = 40
+
+[[menus.main]]
+  name = "Book"
+  url = "https://book.rustvim.org/"
+  weight = 50

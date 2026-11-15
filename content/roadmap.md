@@ -21,8 +21,9 @@ The goals for this release are:
   the language boundary.
 - Validate migrations with focused compatibility and behavior tests.
 - Document the implementation and provide clear build and installation guidance.
-- Document the migrated Rust code in the Rustvim Book, an
-  [mdBook](https://rust-lang.github.io/mdBook/) explaining how the editor's
+- Document the migrated Rust code in the
+  [Rustvim Book](https://book.rustvim.org/), built with
+  [mdBook](https://rust-lang.github.io/mdBook/), explaining how the editor's
   rendering code works.
 
 ## Upstream roadmap

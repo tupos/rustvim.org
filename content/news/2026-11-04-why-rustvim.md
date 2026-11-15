@@ -28,9 +28,9 @@ The project goals are:
   implementation in Rust while preserving the editing model, configuration, and
   plugin interfaces. We are compatible with neovim.
 
-- Documentation is another part of the work. The Rustvim Book, built with
-  mdBook, should explain how the editor works, how its components fit together,
-  and how they operate.
+- Documentation is another part of the work. The
+  [Rustvim Book](https://book.rustvim.org/), built with mdBook, should explain
+  how the editor works, how its components fit together, and how they operate.
 
 - We want to keep the Neovim editor we love while making its internals easier
   to understand, change, improve, and maintain. Rust lets us make ownership,

@@ -27,6 +27,8 @@ release **0.1.0**.
 
 ### Resources
 
+- [Rustvim Book](https://book.rustvim.org/) — implementation notes and a Rust
+  source walkthrough
 - [Building Rustvim from source](/doc/build/)
 - [Contributing to
   Rustvim](https://github.com/tupos/rustvim/blob/master/CONTRIBUTING.md)

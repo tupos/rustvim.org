@@ -17,8 +17,8 @@ Compatible. Maintainable. Extensible.
 - Move implementation logic into safe Rust, with small, explicit C interfaces.
 - Validate migrated components against existing editor behavior.
 - Enable new contributors, remove barriers to entry.
-- Create rustvim book and mdbook documentation of how the editor works and
-  how it can be improved.
+- Develop the [Rustvim Book](https://book.rustvim.org/) with mdBook to explain
+  how the editor works and how it can be improved.
 - Unblock plugin authors.
 - Deliver a first-class Lua interface, as an alternative to Vimscript.
 - Favor composability (long-term thinking) instead of new, incompatible
