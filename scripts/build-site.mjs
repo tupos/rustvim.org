@@ -1,5 +1,5 @@
 import { spawn, spawnSync } from "node:child_process";
-import { mkdtempSync, rmSync, watch } from "node:fs";
+import { existsSync, mkdtempSync, rmSync, watch } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -36,10 +36,8 @@ if (serve) {
   const disk = help.stdout.includes("--renderToDisk") ? ["--renderToDisk"] : [];
   let timer;
 
-  // Watch rendered HTML so indexing follows Hugo's rebuilds. Ignore our own output.
-  const watcher = watch("public", { recursive: true }, (_, filename) => {
-    if (!filename || filename.split(/[\\/]/)[0] === "pagefind") return;
-    if (!filename.endsWith(".html")) return;
+  // Watch sources so replacing public/ cannot disconnect search updates.
+  function refreshSearch() {
     clearTimeout(timer);
     timer = setTimeout(() => {
       const directory = mkdtempSync(join(tmpdir(), "rustvim-search-"));
@@ -53,6 +51,32 @@ if (serve) {
         rmSync(directory, { recursive: true, force: true });
       }
     }, 500);
+  }
+
+  const sourceDirectories = new Set([
+    "archetypes", "assets", "config", "content", "data", "i18n", "layouts",
+    "static", "themes",
+  ]);
+  const sourceWatchers = new Map();
+  function watchSource(directory) {
+    sourceWatchers.get(directory)?.close();
+    sourceWatchers.delete(directory);
+    if (existsSync(directory)) {
+      const watcher = watch(directory, { recursive: true }, refreshSearch);
+      watcher.on("error", onWatchError);
+      sourceWatchers.set(directory, watcher);
+    }
+  }
+  for (const directory of sourceDirectories) watchSource(directory);
+
+  // Watch the parent to handle atomic config saves and source directory changes.
+  const watcher = watch(".", (_, filename) => {
+    if (sourceDirectories.has(filename)) {
+      watchSource(filename);
+      refreshSearch();
+    } else if (/^(hugo|config)\.(toml|ya?ml|json)$/.test(filename ?? "")) {
+      refreshSearch();
+    }
   });
 
   const server = spawn("hugo", [
@@ -63,6 +87,7 @@ if (serve) {
   function cleanup() {
     clearTimeout(timer);
     watcher.close();
+    for (const watcher of sourceWatchers.values()) watcher.close();
   }
 
   for (const signal of ["SIGINT", "SIGTERM"]) {
@@ -71,12 +96,13 @@ if (serve) {
       server.kill(signal);
     });
   }
-  watcher.on("error", (error) => {
+  function onWatchError(error) {
     console.error(error.message);
     cleanup();
     server.kill("SIGTERM");
     process.exitCode = 1;
-  });
+  }
+  watcher.on("error", onWatchError);
   server.on("error", (error) => {
     console.error(error.message);
     cleanup();

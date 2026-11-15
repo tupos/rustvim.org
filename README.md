@@ -80,10 +80,11 @@ and the 404 page are excluded. Search assets are served from this website.
 
 Run `node scripts/build-site.mjs` for a production build. Use
 `node scripts/build-site.mjs --serve` for local development: it builds the
-initial index, starts Hugo's live server, and watches rendered HTML to
-refresh search after rebuilds. A fresh temporary build keeps deleted pages
-out of the index. Pagefind's own output is excluded from the watcher to avoid
-rebuild loops. Hugo server options can follow `--serve`, for example
+initial index, starts Hugo's live server, and watches source directories and
+Hugo configuration files to refresh search after edits. Recreating `public/`
+does not disconnect the source watchers. A fresh temporary build keeps deleted
+pages out of the index. Generated output is not watched, avoiding rebuild loops.
+Hugo server options can follow `--serve`, for example
 `--port 1314`.
 
 Node.js 24 is used in CI. Node.js 22 or newer is required for the development
